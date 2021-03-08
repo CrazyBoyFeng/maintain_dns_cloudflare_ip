@@ -20,6 +20,7 @@ class 字符串(自定义字符串):
 配置解析.读取 = 配置解析.read
 配置解析.取 = 配置解析.get
 配置解析.取整数 = 配置解析.getint
+配置解析.取判断 = 配置解析.getboolean
 
 网络请求.添加包头 = 网络请求.add_header
 Http答复.状态 = Http答复.getcode

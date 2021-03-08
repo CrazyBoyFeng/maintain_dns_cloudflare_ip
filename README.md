@@ -15,8 +15,8 @@ Windows 用户可于 [Microsoft Store](https://www.microsoft.com/zh-cn/p/python-
 ### 配置与执行
 0. 下载[项目](https://github.com/CrazyBoyFeng/maintain-dns-cloudflare-ip/archive/main.zip)并解压至任意目录。
 1. 登录你的 DNS 服务商，设置一个 A 类型的域名解析记录。
-2. 修改 `配置.ini`，按照要求填写参数。
-3. 执行 `维护.py`。
+2. 修改`配置.ini`，按照要求填写参数。
+3. 执行`维护.py`。
 
 ## 捐赠与赞助
 * [支付宝](https://user-images.githubusercontent.com/1733254/110204402-bbcabc80-7ead-11eb-8bbc-9be2041214c2.png)
