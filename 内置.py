@@ -10,9 +10,6 @@ from sys import path as 路径
 
 
 class 字符串(自定义字符串):
-    def 小写(自身):
-        return 自身.lower()
-
     def 编码(自身, 编码, 错误):
         return 自身.encode(编码, 错误)
 
