@@ -1,7 +1,7 @@
 # 维护 DNS Cloudflare IP
 查找可用 Cloudflare IP 并更新域名解析记录。
 
-目前支持：
+目前支持的域名解析服务提供商：
 * DNSPod
 
 ## 如何使用
