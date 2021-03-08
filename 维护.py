@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from time import asctime as 标准时间
 from time import localtime as 本地时间
 from time import sleep as 挂起
 from time import time as 时间
@@ -47,8 +48,8 @@ def 选取ip(原ip: 字符串) -> 字符串:
 
 
 def 维护(配置: 配置项):
-    现在 = 本地时间(时间())
-    输出("本地时间", 现在)
+    现在 = 标准时间(本地时间(时间()))
+    输出("当前时间", 现在)
     域名解析 = 域名解析服务(配置.dns, 配置.账户, 配置.密码, 配置.域名, 配置.域名记录)
     域名记录, ip = 域名解析.查询()
     输出('域名记录', 域名记录)
@@ -65,6 +66,6 @@ while 是:
     try:
         维护(配置)
         输出()
-    except 异常:
-        输出(异常)
+    except 异常 as 维护异常:
+        输出(维护异常)
     挂起(配置.间隔)
