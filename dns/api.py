@@ -1,7 +1,7 @@
 from abc import ABCMeta as 抽象基类
 from abc import abstractmethod as 抽象方法
 from builtins import property as 属性
-from ..内置 import *
+from 内置 import *
 
 
 class 域名解析记录(metaclass=抽象基类):

@@ -1,5 +1,5 @@
-from ..内置 import *
-from api import 域名解析记录
+from 内置 import *
+from .api import 域名解析记录
 from urllib.request import urlopen as 打开网址
 from json import load as 载入json
 from builtins import LookupError as 查询错误

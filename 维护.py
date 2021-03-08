@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-
-from os import chdir as 改变目录
-from sys import path as 路径
 from time import localtime as 本地时间
 from time import sleep as 挂起
 from time import time as 时间
@@ -12,8 +9,6 @@ from 内置 import *
 import dns
 import cloudflare
 import ipv4
-
-改变目录(路径[0])
 
 
 class 配置项:
@@ -45,7 +40,7 @@ def 选取ip(原ip: 字符串) -> 字符串:
     无效 = 是
     while 无效:
         ip = ipv4.随机ip(原ip)
-        输出('随机地址：', ip)
+        输出('随机地址', ip)
         无效 = not cloudflare.检测有效(ip)
     输出('检测有效！')
     return ip
