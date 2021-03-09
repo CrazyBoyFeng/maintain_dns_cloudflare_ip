@@ -26,7 +26,7 @@ ipv4范围列表 = [
 ]
 
 
-def cidr数量(cidr列表) -> 列表:
+def cidr数量(cidr列表: 列表[IP范围]) -> 列表:
     数量列表 = []
     for ip范围 in cidr列表:
         数量列表.append(ip范围.num_addresses)
@@ -36,15 +36,12 @@ def cidr数量(cidr列表) -> 列表:
 ipv4范围数量列表 = cidr数量(ipv4范围列表)
 
 
-def 随机整数ip(cidr):
-    ip头 = cidr[0]
-    ip尾 = cidr[-1]
-    return 随机整数(整数(ip头), 整数(ip尾))
+def 随机ip(cidr: IP范围) -> 字符串:
+    return 字符串(IP地址(随机整数(整数(cidr[0]), 整数(cidr[-1]))))
 
 
-def 随机ipv4(排除: 列表) -> 字符串:
+def 随机ipv4(排除: 列表[字符串]) -> 字符串:
     while 是:
-        ip范围 = 选择(ipv4范围列表, ipv4范围数量列表)[0]
-        ip = 字符串(IP地址(随机整数ip(ip范围)))
+        ip = 随机ip(选择(ipv4范围列表, ipv4范围数量列表)[0])
         if ip not in 排除:
             return ip
