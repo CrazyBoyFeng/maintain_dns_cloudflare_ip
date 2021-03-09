@@ -1,9 +1,9 @@
-from 内置 import *
 from ipaddress import IPv4Network as IPv4地址
 from random import randint as 随机整数
 from random import choice as 范围
 from builtins import int as 整数
 from typing import Tuple as 元组
+from builtins import str as 字符串
 
 
 def 整数边界(cidr: 字符串) -> 元组[整数, 整数]:
