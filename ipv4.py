@@ -2,8 +2,10 @@ from ipaddress import IPv4Network as IPv4地址
 from random import randint as 随机整数
 from random import choice as 范围
 from builtins import int as 整数
+from builtins import list as 列表
 from typing import Tuple as 元组
 from builtins import str as 字符串
+from 组件 import *
 
 
 def 整数边界(cidr: 字符串) -> 元组[整数, 整数]:
@@ -33,9 +35,9 @@ def 整数范围() -> 范围:
 ip范围 = 整数范围()
 
 
-def 随机ip(排除: 字符串) -> 字符串:
-    ip = 排除
-    while ip is 排除:
+def 随机ip(排除: 列表) -> 字符串:
+    while 是:
         整数ip = 随机整数(*ip范围)
         ip = 字符串(IPv4地址(整数ip))
-    return ip
+        if ip not in 排除:
+            return ip

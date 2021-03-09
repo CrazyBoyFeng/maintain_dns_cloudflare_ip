@@ -15,7 +15,8 @@ from urllib.request import Request as 网络请求
 配置解析.取整数 = 配置解析.getint
 配置解析.取判断 = 配置解析.getboolean
 
-网络请求.添加包头 = 网络请求.add_header
 Http答复.状态 = Http答复.getcode
 
 路径.append('.')
+
+网络请求.添加包头 = 网络请求.add_header
