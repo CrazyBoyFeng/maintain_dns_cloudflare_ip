@@ -3,10 +3,8 @@
 
 from configparser import ConfigParser as 配置解析
 from http.client import HTTPResponse as Http答复
-from urllib.request import Request as 网络请求
 from sys import path as 路径
-
-路径.append('.')
+from urllib.request import Request as 网络请求
 
 无 = None
 是 = True
@@ -19,3 +17,5 @@ from sys import path as 路径
 
 网络请求.添加包头 = 网络请求.add_header
 Http答复.状态 = Http答复.getcode
+
+路径.append('.')
