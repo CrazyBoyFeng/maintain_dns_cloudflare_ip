@@ -13,7 +13,7 @@ Windows 用户可于 [Microsoft Store](https://www.microsoft.com/zh-cn/p/python-
 如果没有自带，或不使用 Microsoft Store 的 Windows 用户，可于[官网](https://www.python.org/downloads)下载安装。
 
 ### 配置与执行
-0. 下载[项目](https://github.com/CrazyBoyFeng/maintain-dns-cloudflare-ip/archive/main.zip)并解压至任意目录。
+0. 下载[项目](https://github.com/CrazyBoyFeng/maintain_dns_cloudflare_ip/archive/main.zip)并解压至任意目录。
 1. 登录你的 DNS 服务商，设置一个 A 类型的域名解析记录。
 2. 修改`配置.ini`，按照要求填写参数。
 3. 执行`维护.py`。
