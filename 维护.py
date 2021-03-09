@@ -41,9 +41,7 @@ def 选取ip(ip: 字符串, 响应超时: 整数) -> 字符串:
     while ip in 无效列表:
         ip = ipv4.随机ip(无效列表)
         提示('随机地址', ip)
-        if cloudflare.检测有效(ip, 响应超时):
-            break
-        else:
+        if not cloudflare.检测有效(ip, 响应超时):
             无效列表.append(ip)
     提示('检测有效', ip)
     return ip
