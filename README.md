@@ -6,7 +6,7 @@
 
 ## 如何使用
 ### 安装 Python 运行环境
-Windows 用户可于 [Microsoft Store](https://www.microsoft.com/zh-cn/p/python-39) 便捷安装。  
+Windows 用户可于 [Microsoft Store](https://www.microsoft.com/zh-cn/p/python-39/9p7qfqmjrfp7) 便捷安装。  
 
 其它主流操作系统一般自带 Python。  
 
