@@ -8,7 +8,7 @@
 ### 安装 Python 运行环境
 Windows 用户可于 [Microsoft Store](https://www.microsoft.com/zh-cn/p/python-39/9p7qfqmjrfp7) 便捷安装。  
 
-其它主流操作系统一般自带 Python。  
+其它主流桌面操作系统一般自带 Python。  
 
 如果没有自带，或不使用 Microsoft Store 的 Windows 用户，可于[官网](https://www.python.org/downloads)下载安装。
 
