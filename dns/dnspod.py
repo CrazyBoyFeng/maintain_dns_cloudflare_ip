@@ -13,7 +13,6 @@ from .api import 域名解析记录
 }
 
 
-
 def 请求结果(请求路径: 字符串, 参数: 字符串):
     网址 = 'https://dnsapi.cn/' + 请求路径
     数据 = 参数.encode('utf-8')
