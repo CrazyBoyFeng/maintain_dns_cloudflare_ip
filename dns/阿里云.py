@@ -66,7 +66,7 @@ class 阿里云(域名解析记录):
 
     def 参数(自身, 操作: 字符串, **参数):
         参数['Action'] = 操作
-        参数['Lang'] = 'cn'
+        参数['Lang'] = 'zh'
         参数['DomainName'] = 自身.域名
         return 参数
 
