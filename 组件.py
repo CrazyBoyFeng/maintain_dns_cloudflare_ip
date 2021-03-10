@@ -3,6 +3,7 @@
 
 from configparser import ConfigParser as 配置解析
 from http.client import HTTPResponse as Http答复
+from ipaddress import IPv4Network as IPv4网络
 from sys import path as 路径
 from urllib.request import Request as 网络请求
 
@@ -16,6 +17,8 @@ from urllib.request import Request as 网络请求
 配置解析.取判断 = 配置解析.getboolean
 
 Http答复.状态 = Http答复.getcode
+
+IPv4网络.地址数量 = IPv4网络.num_addresses
 
 路径.append('.')
 
