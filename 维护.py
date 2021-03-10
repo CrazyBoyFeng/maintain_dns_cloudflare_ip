@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # 咱试试用中文写代码，反正开发者和用户都是中文使用者。
 # 这样可以不用写注释，沟通效率也更高。
 from builtins import IOError as 传输错误
@@ -9,6 +7,7 @@ from builtins import print as 提示
 from builtins import str as 字符串
 from configparser import ConfigParser as 配置解析
 from datetime import datetime as 日期时间
+from os import chdir as 改变目录
 from sys import path as 路径
 from time import sleep as 挂起
 
@@ -18,6 +17,7 @@ import ip
 
 是 = True
 
+改变目录(路径[0])
 路径.append('.')
 
 
