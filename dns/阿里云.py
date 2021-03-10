@@ -90,7 +90,6 @@ class 阿里云(域名解析记录):
             SubDomain=自身.域名记录
         )
         json = 请求(自身.签名参数(参数))
-        print(json)
         记录 = json['DomainRecords']['Record'][0]
         自身.RR = 记录['RR']
         自身.RecordId = 记录['RecordId']
