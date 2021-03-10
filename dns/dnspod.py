@@ -38,7 +38,7 @@ class DNSPod(域名解析记录):
         自身.查询()
         pass
 
-    def 查询(自身) -> 元组[字符串, 字符串]:
+    def 查询(自身):
         参数 = 自身.参数 + '&length=1' + '&record_type=A'
         json = 请求结果('Record.List', 参数)
         if json['status']['code'] != '1':
@@ -47,7 +47,7 @@ class DNSPod(域名解析记录):
             自身.参数 += '&record_id=' + json.records[0].id
             自身.参数 += '&record_line_id=' + json.records[0].line_id
         自身.ip = json['records'][0]['value']
-        return 自身.域名记录, 自身.ip
+        pass
 
     def 修改(自身, ip):
         参数 = 自身.参数 + '&value=' + ip
