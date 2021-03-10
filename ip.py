@@ -48,3 +48,4 @@ def 随机ipv4(排除: 列表[字符串]) -> 字符串:
         ip = 随机ip(选择(ipv4范围列表, ipv4范围数量列表)[0])
         if ip not in 排除:
             return ip
+    pass

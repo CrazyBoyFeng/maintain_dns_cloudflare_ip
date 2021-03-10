@@ -2,8 +2,9 @@ from builtins import ValueError as 结果错误
 from builtins import str as 字符串
 from json import load as 载入json
 from typing import Tuple as 元组
-from urllib.request import urlopen as 打开网址
 from urllib.request import Request as 网络请求
+from urllib.request import urlopen as 打开网址
+
 from .api import 域名解析记录
 
 无 = None
@@ -35,6 +36,7 @@ class DNSPod(域名解析记录):
         自身.域名记录 = 域名记录
         自身.ip = 无
         自身.查询()
+        pass
 
     def 查询(自身) -> 元组[字符串, 字符串]:
         参数 = 自身.参数 + '&length=1' + '&record_type=A'
@@ -52,3 +54,4 @@ class DNSPod(域名解析记录):
         json = 请求结果('Record.Ddns', 参数)
         if json['status']['code'] != '1':
             raise 结果错误(json['status']['message'])
+        pass
