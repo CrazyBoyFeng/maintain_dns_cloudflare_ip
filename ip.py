@@ -1,11 +1,15 @@
 from builtins import int as 整数
 from builtins import list as 列表
 from builtins import str as 字符串
-from ipaddress import ip_network as IP网络
+from ipaddress import IPv4Network as IPv4网络
 from ipaddress import ip_address as IP地址
+from ipaddress import ip_network as IP网络
 from random import choices as 选择
 from random import randint as 随机整数
-from 组件 import *
+
+是 = True
+
+IPv4网络.地址数量 = IPv4网络.num_addresses
 
 ipv4范围列表 = [
     IP网络('173.245.48.0/20'),

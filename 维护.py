@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+
+# 咱试试用中文写代码，反正开发者和用户都是中文使用者。
+# 这样可以不用写注释，沟通效率也更高。
 from builtins import ValueError as 结果错误
 from builtins import print as 提示
 from builtins import str as 字符串
@@ -8,10 +11,19 @@ from datetime import datetime as 日期时间
 import dns
 import cloudflare
 import ip
-from 组件 import *
+from sys import path as 路径
+from configparser import ConfigParser as 配置解析
+路径.append('.')
+
+是 = True
 
 
 class 配置项:
+    配置解析.读取 = 配置解析.read
+    配置解析.取 = 配置解析.get
+    配置解析.取整数 = 配置解析.getint
+    配置解析.取判断 = 配置解析.getboolean
+
     def __init__(自身, 文件: 字符串 = '配置.ini'):
         配置 = 配置解析()
         配置.读取(文件, 'utf-8')
