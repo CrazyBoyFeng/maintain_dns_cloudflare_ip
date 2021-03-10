@@ -1,4 +1,5 @@
 from base64 import b64encode as base64编码
+from builtins import IndexError as 索引错误
 from builtins import ValueError as 结果错误
 from builtins import dict as 字典
 from builtins import sorted as 排序
@@ -90,7 +91,10 @@ class 阿里云(域名解析记录):
             SubDomain=自身.域名记录
         )
         json = 请求(自身.签名参数(参数))
-        记录 = json['DomainRecords']['Record'][0]
+        try:
+            记录 = json['DomainRecords']['Record'][0]
+        except 索引错误:
+            raise 结果错误('域名记录 查询失败')
         自身.RR = 记录['RR']
         自身.RecordId = 记录['RecordId']
         自身.Type = 记录['Type']
