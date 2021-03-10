@@ -56,4 +56,5 @@ class DNSPod(域名解析记录):
         json = 请求结果('Record.Ddns', 参数)
         if json['status']['code'] != '1':
             raise 结果错误(json['status']['message'])
+        自身.ip = ip
         pass
