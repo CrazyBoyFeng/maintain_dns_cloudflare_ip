@@ -1,23 +1,25 @@
 from builtins import ValueError as 结果错误
-from builtins import dict as 字典
 from builtins import str as 字符串
 from json import load as 载入json
 from typing import Tuple as 元组
 from urllib.request import urlopen as 打开网址
-
-from 组件 import *
+from urllib.request import Request as 网络请求
 from .api import 域名解析记录
 
+无 = None
+
 请求头部 = {
-    'Content-Type': 'multipart/form-data',
-    'User-Agent': '维护_dns_cloudflare_ip/0.0.1 (crazyboyfeng@qq.com)',
+    'User-Agent': 'maintain_dns_cloudflare_ip/0.0.1 (crazyboyfeng@qq.com)'
 }
 
 
-def 请求结果(请求路径: 字符串, 参数: 字符串) -> 字典:
+
+def 请求结果(请求路径: 字符串, 参数: 字符串):
     网址 = 'https://dnsapi.cn/' + 请求路径
-    请求 = 网络请求(网址, 参数.encode(), 请求头部)
-    return 载入json(打开网址(请求))
+    数据 = 参数.encode('utf-8')
+    请求 = 网络请求(网址, 数据, 请求头部)
+    答复 = 打开网址(请求)
+    return 载入json(答复)
 
 
 class DNSPod(域名解析记录):
