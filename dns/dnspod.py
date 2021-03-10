@@ -1,7 +1,6 @@
 from builtins import ValueError as 结果错误
 from builtins import str as 字符串
 from json import load as 载入json
-from typing import Tuple as 元组
 from urllib.request import Request as 网络请求
 from urllib.request import urlopen as 打开网址
 

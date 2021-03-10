@@ -3,19 +3,19 @@
 # 咱试试用中文写代码，反正开发者和用户都是中文使用者。
 # 这样可以不用写注释，沟通效率也更高。
 from builtins import ValueError as 结果错误
+from builtins import int as 整数
 from builtins import print as 提示
 from builtins import str as 字符串
-from builtins import int as 整数
-from time import sleep as 挂起
+from configparser import ConfigParser as 配置解析
 from datetime import datetime as 日期时间
+from sys import path as 路径
+from time import sleep as 挂起
+
 import dns
 import cloudflare
 import ip
-from sys import path as 路径
-from configparser import ConfigParser as 配置解析
-路径.append('.')
 
-是 = True
+路径.append('.')
 
 
 class 配置项:
@@ -33,10 +33,8 @@ class 配置项:
         自身.强制更新 = 配置.取判断('维护', '强制更新')
         自身.账户 = 配置.取('DNS', '账户')
         自身.密码 = 配置.取('DNS', '密码')
-        域名 = 配置.取('DNS', '域名')
-        域名记录 = 配置.取('DNS', '域名记录')
-        自身.域名 = 域名 or 域名记录
-        自身.域名记录 = 域名记录 or 域名
+        自身.域名 = 配置.取('DNS', '域名')
+        自身.域名记录 = 配置.取('DNS', '域名记录')
         pass
 
 
@@ -74,7 +72,7 @@ def 维护(配置: 配置项):
     pass
 
 
-while 是:
+while 1:
     提示("当前时间", 日期时间.now())
     配置 = 配置项()
     try:

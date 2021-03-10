@@ -7,8 +7,6 @@ from ipaddress import ip_network as IP网络
 from random import choices as 选择
 from random import randint as 随机整数
 
-是 = True
-
 IPv4网络.地址数量 = IPv4网络.num_addresses
 
 ipv4范围列表 = [
@@ -44,7 +42,7 @@ def 随机ip(cidr: IP网络) -> 字符串:
 
 
 def 随机ipv4(排除: 列表[字符串]) -> 字符串:
-    while 是:
+    while 1:
         ip = 随机ip(选择(ipv4范围列表, ipv4范围数量列表)[0])
         if ip not in 排除:
             return ip
