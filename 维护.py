@@ -2,6 +2,7 @@
 
 # 咱试试用中文写代码，反正开发者和用户都是中文使用者。
 # 这样可以不用写注释，沟通效率也更高。
+from builtins import IOError as 传输错误
 from builtins import ValueError as 结果错误
 from builtins import int as 整数
 from builtins import print as 提示
@@ -14,6 +15,8 @@ from time import sleep as 挂起
 import dns
 import cloudflare
 import ip
+
+是 = True
 
 路径.append('.')
 
@@ -52,7 +55,7 @@ def 选取ip(网络地址: 字符串, 响应超时: 整数) -> 字符串:
     无效列表 = [网络地址]
     while 网络地址 in 无效列表:
         网络地址 = ip.随机ipv4(无效列表)
-        提示('随机地址', 网络地址)
+        提示('随机地址', 网络地址, end=' ', flush=是)
         if not cloudflare.检测有效(网络地址, 响应超时):
             提示('检测无效')
             无效列表.append(网络地址)
@@ -67,19 +70,19 @@ def 维护(配置: 配置项):
     if (not 配置.强制更新) and cloudflare.检测有效(域名解析.ip, 配置.响应超时):
         return
     网络地址 = 选取ip(域名解析.ip, 配置.响应超时)
-    提示('更新地址', 网络地址)
+    提示('更新地址', 网络地址, end=' ', flush=是)
     域名解析.修改(网络地址)
-    提示('本次更新执行完毕')
+    提示('执行完毕')
     pass
 
 
-while 1:
+while 是:
     提示("当前时间", 日期时间.now())
     配置 = 配置项()
     try:
         维护(配置)
-    except 结果错误 as 错误:
+    except (结果错误, 传输错误) as 错误:  # TODO 也许还需要捕获 系统错误 和 超时错误？
         提示(错误)
-    提示(配置.间隔, '秒后再次执行')
+    提示('下次执行', 配置.间隔, '秒后')
     挂起(配置.间隔)
     提示()
