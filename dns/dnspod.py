@@ -7,6 +7,8 @@ from urllib.request import urlopen as 打开网址
 
 from .api import 域名解析记录
 
+无 = None
+
 请求头部 = {
     'User-Agent': 'maintain_dns_cloudflare_ip/0.0.1 (crazyboyfeng@qq.com)'
 }
@@ -21,8 +23,8 @@ def 请求结果(请求路径: 字符串, 参数: 字符串):
 
 
 class DNSPod(域名解析记录):
-    def __init__(自身, 账户: 字符串, 密码: 字符串, 域名: 字符串, 域名记录: 字符串):
-        super().__init__(账户, 密码, 域名, 域名记录)
+    def __init__(自身, 账户: 字符串, 密码: 字符串, 域名: 字符串, 域名记录: 字符串, ip: 字符串 = 无):
+        super().__init__(账户, 密码, 域名, 域名记录, ip)
         自身.参数 = (
                 'login_token=%s,%s' % (账户, 密码)
                 + '&format=json'
@@ -32,12 +34,14 @@ class DNSPod(域名解析记录):
                 + '&sub_domain=' + 域名记录
         )
         自身.域名记录 = 域名记录
-        自身.ip = ''
+        自身.ip = ip
         自身.查询()
         pass
 
     def 查询(自身):
         参数 = 自身.参数 + '&length=1' + '&record_type=A'
+        if 自身.ip:
+            参数 += '&keyword=' + 自身.ip
         json = 请求结果('Record.List', 参数)
         if json['status']['code'] != '1':
             raise 结果错误(json['status']['message'])
@@ -46,9 +50,9 @@ class DNSPod(域名解析记录):
         except 索引错误:
             raise 结果错误('域名记录 查询失败')
         if 'record' not in 自身.参数:
-            自身.参数 += '&record_id=' + json['records'][0]['id']
-            自身.参数 += '&record_line_id=' + json['records'][0]['line_id']
-        自身.ip = json['records'][0]['value']
+            自身.参数 += '&record_id=' + 记录['id']
+            自身.参数 += '&record_line_id=' + 记录['line_id']
+        自身.ip = 记录['value']
         pass
 
     def 修改(自身, ip):

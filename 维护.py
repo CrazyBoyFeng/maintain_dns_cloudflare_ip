@@ -5,11 +5,13 @@ from builtins import ValueError as 结果错误
 from builtins import int as 整数
 from builtins import print as 提示
 from builtins import str as 字符串
+from builtins import bool as 判断
 from configparser import ConfigParser as 配置解析
 from datetime import datetime as 日期时间
 from os import chdir as 改变目录
 from sys import path as 路径
 from time import sleep as 挂起
+from socket import gethostbyname as 取域名ip
 
 import dns
 import cloudflare
@@ -21,70 +23,75 @@ import ip
 路径.append('.')
 
 
-class 配置项:
+class 维护配置:
     配置解析.读取 = 配置解析.read
     配置解析.取 = 配置解析.get
     配置解析.取整数 = 配置解析.getint
     配置解析.取判断 = 配置解析.getboolean
 
     def __init__(自身, 文件: 字符串 = '配置.ini'):
-        配置 = 配置解析()
-        配置.读取(文件, 'utf-8')
-        自身.dns = 配置.取('维护', 'dns')
-        自身.间隔 = 配置.取整数('维护', '间隔')
-        自身.响应超时 = 配置.取整数('维护', '响应超时')
-        自身.强制更新 = 配置.取判断('维护', '强制更新')
-        自身.账户 = 配置.取('DNS', '账户')
-        自身.密码 = 配置.取('DNS', '密码')
-        自身.域名 = 配置.取('DNS', '域名')
-        自身.域名记录 = 配置.取('DNS', '域名记录')
+        配置参数 = 配置解析()
+        配置参数.读取(文件, 'utf-8')
+        自身.dns = 配置参数.取('维护', 'dns')
+        自身.间隔 = 配置参数.取整数('维护', '间隔')
+        自身.响应超时 = 配置参数.取整数('维护', '响应超时')
+        自身.强制更新 = 配置参数.取判断('维护', '强制更新')
+        自身.解析线路 = 配置参数.取判断('维护', '解析线路')
+        自身.账户 = 配置参数.取('DNS', '账户')
+        自身.密码 = 配置参数.取('DNS', '密码')
+        自身.域名 = 配置参数.取('DNS', '域名')
+        自身.域名记录 = 配置参数.取('DNS', '域名记录')
         pass
 
 
-def 域名解析服务(解析服务: 字符串, 账户: 字符串, 密码: 字符串, 域名: 字符串, 域名记录: 字符串):
+def 域名解析服务(解析服务: 字符串, 账户: 字符串, 密码: 字符串, 域名: 字符串, 域名记录: 字符串, ip地址: 字符串):
     提示('解析服务', 解析服务)
     if 'DNSPod' in 解析服务:
-        return dns.DNSPod(账户, 密码, 域名, 域名记录)
+        return dns.DNSPod(账户, 密码, 域名, 域名记录, ip地址)
     if '阿里' in 解析服务:
-        return dns.阿里云(账户, 密码, 域名, 域名记录)
+        return dns.阿里云(账户, 密码, 域名, 域名记录, ip地址)
     raise 结果错误('不支持的域名解析服务提供商')
     pass
 
 
-def 选取ip(网络地址: 字符串, 响应超时: 整数) -> 字符串:
-    无效列表 = [网络地址]
-    while 网络地址 in 无效列表:
-        网络地址 = ip.随机ipv4(无效列表)
-        提示('随机地址', 网络地址, end=' ', flush=是)
-        if not cloudflare.检测有效(网络地址, 响应超时):
+def 选取ip(ip地址: 字符串, 响应超时: 整数) -> 字符串:
+    无效列表 = [ip地址]
+    while ip地址 in 无效列表:
+        ip地址 = ip.随机ipv4(无效列表)
+        提示('随机地址', ip地址, end=' ', flush=是)
+        if not cloudflare.检测有效(ip地址, 响应超时):
             提示('检测无效')
-            无效列表.append(网络地址)
+            无效列表.append(ip地址)
     提示('检测有效')
-    return 网络地址
+    return ip地址
 
 
-def 维护(配置: 配置项):
+def 维护(强制更新: 判断, 响应超时: 判断):
     提示("当前时间", 日期时间.now())
-    if not 配置.强制更新:
+    if not 强制更新:
         提示('当前地址', 域名解析.ip, end=' ', flush=是)
-        if cloudflare.检测有效(域名解析.ip, 配置.响应超时):
+        if cloudflare.检测有效(域名解析.ip, 响应超时):
             提示('检测有效')
             return
         提示('检测无效')
-    网络地址 = 选取ip(域名解析.ip, 配置.响应超时)
-    提示('更新地址', 网络地址, end=' ', flush=是)
-    域名解析.修改(网络地址)
+    ip地址 = 选取ip(域名解析.ip, 响应超时)
+    提示('更新地址', ip地址, end=' ', flush=是)
+    域名解析.修改(ip地址)
     提示('执行完毕')
     pass
 
 
-配置 = 配置项()
-域名解析 = 域名解析服务(配置.dns, 配置.账户, 配置.密码, 配置.域名, 配置.域名记录)
-提示('域名记录', 域名解析.域名记录)
+配置 = 维护配置()
+提示('域名记录', 配置.域名记录)
+线路地址 = ''
+if 配置.解析线路:
+    线路地址 = 取域名ip(配置.域名记录)
+    提示('所在线路', 线路地址)
+域名解析 = 域名解析服务(配置.dns, 配置.账户, 配置.密码, 配置.域名, 配置.域名记录, 线路地址)
 提示()
 while 是:
     try:
-        维护(配置)
+        维护(配置.强制更新, 配置.响应超时)
     except (结果错误, 传输错误) as 错误:  # TODO 也许还需要捕获 系统错误 和 超时错误？
         提示(错误)
     提示()
