@@ -49,7 +49,7 @@ class DNSPod(域名解析记录):
         if 自身.记录['value']:
             参数['keyword='] = 自身.记录['value']
         json = 请求结果('Record.List', 参数)
-        if json['status']['code'] is not '1':
+        if json['status']['code'] != '1':
             raise 结果错误(json['status']['message'])
         记录 = json['records'][0]
         自身.记录 = {
@@ -67,7 +67,7 @@ class DNSPod(域名解析记录):
         参数.update(自身.记录)
         参数['value'] = ip
         json = 请求结果('Record.Ddns', 参数)
-        if json['status']['code'] is not '1':
+        if json['status']['code'] != '1':
             raise 结果错误(json['status']['message'])
         自身.记录['value'] = ip
         pass
