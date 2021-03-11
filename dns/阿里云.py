@@ -68,8 +68,7 @@ class 阿里云(域名解析记录):
             'SignatureMethod': 'HMAC-SHA1',
             'SignatureVersion': '1.0',
             'DomainName': 主域名,
-            'Lang': 'zh',
-            'Type': 'A'
+            'Lang': 'zh'
         }
         自身.secret = 密码
         自身.记录 = {
@@ -86,7 +85,8 @@ class 阿里云(域名解析记录):
             RRKeyWord=自身.记录['RR']
         ) if 自身.记录['Value'] else 自身.签名参数(
             'DescribeDomainRecords',
-            SubDomain=自身.记录['RR'] + '.' + 自身.固定参数['DomainName']
+            SubDomain=自身.记录['RR'] + '.' + 自身.固定参数['DomainName'],
+            Type='A'
         )
         json = 请求(参数)
         try:
