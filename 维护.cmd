@@ -5,10 +5,11 @@ SetLocal EnableDelayedExpansion
 Title %~n0
 CD /D "%~dp0"
 
-python %~n0.py
+Python %~n0.py
 Set 退出码=!ErrorLevel!
+Echo.
 If Not "!退出码!"=="0" (
-    Echo 退出码：!退出码!
+    Echo 退出码：!退出码!  1>&2
 )
 Pause
 Exit !退出码!
