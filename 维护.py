@@ -10,6 +10,7 @@ from configparser import ConfigParser as 配置解析
 from datetime import datetime as 日期时间
 from os import chdir as 改变目录
 from sys import path as 路径
+from sys import stderr as 错误输出
 from time import sleep as 挂起
 from socket import gethostbyname as 取域名ip
 
@@ -96,7 +97,7 @@ while 是:
     try:
         维护(配置.强制更新, 配置.响应超时)
     except (结果错误, 传输错误) as 错误:  # TODO 也许还需要捕获 系统错误 和 超时错误？
-        提示(错误)
+        提示(错误, file=错误输出)
     提示()
     提示('下次执行', 配置.间隔, '秒后', end='\r')
     挂起(配置.间隔)
