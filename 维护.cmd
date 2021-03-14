@@ -1,15 +1,14 @@
 @Echo off
-::Windows Python è„šæœ¬å¯åŠ¨å™¨
-::ç»“æŸæ—¶æš‚åœä»¥æŸ¥çœ‹é”™è¯¯ä¿¡æ¯
+:: Windows Python ½Å±¾Æô¶¯Æ÷
+:: ½áÊøºó»áÔİÍ£ÒÔ²é¿´´íÎóĞÅÏ¢
 SetLocal EnableDelayedExpansion
-CHCP 65001 > Nul
 Title %~n0
 CD /D "%~dp0"
 
 python %~n0.py
-Set é€€å‡ºç =!ErrorLevel!
-If Not "!é€€å‡ºç !"=="0" (
-    Echo é€€å‡ºç ï¼š!é€€å‡ºç !
+Set ÍË³öÂë=!ErrorLevel!
+If Not "!ÍË³öÂë!"=="0" (
+    Echo ÍË³öÂë£º!ÍË³öÂë!
 )
 Pause
-Exit !é€€å‡ºç !
+Exit !ÍË³öÂë!
