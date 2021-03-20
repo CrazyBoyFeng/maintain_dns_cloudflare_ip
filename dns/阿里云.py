@@ -86,7 +86,7 @@ class 阿里云(域名解析记录):
             KeyWord=自身.记录['Value'],
             RRKeyWord=自身.记录['RR']
         ) if 自身.记录['Value'] else 自身.签名参数(
-            'DescribeDomainRecords',
+            'DescribeSubDomainRecords',
             SubDomain=自身.记录['RR'] + '.' + 自身.固定参数['DomainName'],
             Type='A'
         )
