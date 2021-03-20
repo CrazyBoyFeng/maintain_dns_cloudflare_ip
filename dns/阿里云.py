@@ -99,7 +99,8 @@ class 阿里云(域名解析记录):
             'RR': 记录['RR'],
             'RecordId': 记录['RecordId'],
             'Type': 记录['Type'],
-            'Value': 记录['Value']
+            'Value': 记录['Value'],
+            'TTL': 记录['TTL']
         }
         pass
 
