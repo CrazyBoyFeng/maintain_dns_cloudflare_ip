@@ -57,8 +57,8 @@ class DNSPod(域名解析记录):
             'record_line_id': 记录['line_id'],
             'value': 记录['value'],
             'record_type': 记录['record_type'],
-            'mx': 记录['mx'],
-            'ttl': 记录['ttl'],
+            'mx': 字符串(记录['mx']),
+            'ttl': 字符串(记录['ttl']),
         }
         pass
 
