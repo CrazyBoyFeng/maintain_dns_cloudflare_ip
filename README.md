@@ -1,5 +1,5 @@
 # 维护 DNS Cloudflare IP
-_此脚本不再维护，类似需求请考虑 [Optimize-DnsCloudflareIP](https://github.com/CrazyBoyFeng/Optimze_DnsCloudflareIP) 项目。_
+_此脚本不再维护，类似需求请考虑 [Optimize-DnsCloudflareIP](https://github.com/CrazyBoyFeng/Optimize-DnsCloudflareIP) 项目。_
 
 查找可用 Cloudflare IP 并更新域名解析记录。
 
