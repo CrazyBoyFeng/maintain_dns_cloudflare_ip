@@ -1,7 +1,7 @@
 # 维护 DNS Cloudflare IP
-查找可用 Cloudflare IP 并更新域名解析记录。
-
 _此脚本不再维护，类似需求请考虑 [Optimize-DnsCloudflareIP](https://github.com/CrazyBoyFeng/Optimze_DnsCloudflareIP) 项目。_
+
+查找可用 Cloudflare IP 并更新域名解析记录。
 
 目前支持的域名解析服务提供商：
 * DNSPod
